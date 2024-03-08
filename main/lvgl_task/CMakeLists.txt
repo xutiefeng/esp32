@@ -1,0 +1,18 @@
+idf_component_register(SRCS "ui_img_img_demo_widgets_avatar_png.c" "ui_font_Big_Number.c"
+                    SRCS "ui_font_Bold_Font.c"
+                    SRCS "ui_helpers.c"
+                    SRCS "ui_img_icn_battery_png.c"
+                    SRCS "ui_img_icn_bluetooth_png.c"
+                    SRCS "ui_img_icn_history_png.c"
+                    SRCS "ui_img_img_btn_bg_png.c"
+                    SRCS "ui_img_img_btn_off_png.c"
+                    SRCS "ui_img_img_btn_on_png.c"
+                    SRCS "ui_img_img_heart_big_png.c"
+                    SRCS "ui_img_img_heart_small_png.c"
+                    SRCS "ui_img_img_line_png.c"
+                    SRCS "ui_img_img_slider_png.c"
+                    SRCS "ui_img_img_switch_bg_png.c"
+                    SRCS "ui_img_img_demo_widgets_avatar_png.c"
+                    SRCS "ui.c"
+                    
+                    INCLUDE_DIRS ".")
