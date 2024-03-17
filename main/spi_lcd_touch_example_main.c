@@ -457,7 +457,7 @@ void app_main(void)
 
     ESP_LOGI(TAG, "Display LVGL Meter Widget");
     //example_lvgl_demo_ui(disp); // idf自带的例子
-     ui_init();                  // 小步移植SquareLine Studio 1.2.3 自带的例子
+      ui_init();                  // 小步移植SquareLine Studio 1.2.3 自带的例子 2024 03 16
     // lv_demo_widgets();          // lvgl的demo
     // lv_demo_stress();           // lvgl的demo
     // lv_demo_keypad_encoder();   // lvgl的demo
@@ -467,8 +467,8 @@ void app_main(void)
     while (1)
     {
         // raise the task priority of LVGL and/or reduce the handler period can improve the performance
-        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(20));//20240318
         // The task running lv_timer_handler should have lower priority than that running `lv_tick_inc`
-        lv_timer_handler();
+          lv_timer_handler();
     }
 }
