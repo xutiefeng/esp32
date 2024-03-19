@@ -19,6 +19,8 @@ idf_component_register(SRCS "spi_lcd_touch_example_main.c" "lvgl_demo_ui.c"
                         SRCS "lvgl_task/ui.c"
                         SRCS "../managed_components/espressif__esp_lcd_st7796s/esp_lcd_st7796s.c"
                         INCLUDE_DIRS "../managed_components/espressif__esp_lcd_st7796s/include"
+                        INCLUDE_DIRS "../managed_components/espressif__esp_lcd_touch/esp_lcd_touch.c"
+                        INCLUDE_DIRS "../managed_components/espressif__esp_lcd_touch/include"
                         INCLUDE_DIRS "./bsp"
                         INCLUDE_DIRS "./lvgl_task"
                         INCLUDE_DIRS ".")

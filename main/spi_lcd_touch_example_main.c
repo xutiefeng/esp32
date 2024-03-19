@@ -30,6 +30,7 @@
 #include "esp_lcd_gc9a01.h"
 #endif
 #include "esp_lcd_st7796s.h"
+#include "esp_lcd_touch.h"
 
 #if CONFIG_EXAMPLE_LCD_TOUCH_CONTROLLER_STMPE610
 #include "esp_lcd_touch_stmpe610.h"
@@ -55,6 +56,7 @@ static const char *TAG = "example";
 #define EXAMPLE_PIN_NUM_LCD_CS 15
 #define EXAMPLE_PIN_NUM_BK_LIGHT 32
 #define EXAMPLE_PIN_NUM_TOUCH_CS 27
+#define CONFIG_EXAMPLE_LCD_TOUCH_ENABLED 0
 
 // The pixel number in horizontal and vertical
 #if CONFIG_EXAMPLE_LCD_CONTROLLER_ILI9341
@@ -70,7 +72,7 @@ static const char *TAG = "example";
 
 #define EXAMPLE_LVGL_TICK_PERIOD_MS 2
 
-#if CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
+#if 1//CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
 esp_lcd_touch_handle_t tp = NULL;
 #endif
 

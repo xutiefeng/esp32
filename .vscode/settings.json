@@ -75,7 +75,8 @@
         "clk_tree_defs.h": "c",
         "esp_assert.h": "c",
         "lv_meter.h": "c",
-        "esp_timer.h": "c"
+        "esp_timer.h": "c",
+        "esp_lcd_touch.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "idf.flashType": "UART",
