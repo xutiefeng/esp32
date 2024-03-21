@@ -156,7 +156,7 @@ static void example_lvgl_port_update_callback(lv_disp_drv_t *drv)
     }
 }
 
-#if CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
+#if 1//CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
 
 // 触摸点相关数据结构定义
 typedef struct
@@ -380,37 +380,39 @@ void app_main(void)
     // user can flush pre-defined pattern to the screen before we turn on the screen or backlight
     ESP_ERROR_CHECK(esp_lcd_panel_disp_on_off(panel_handle, true));
 
-#if CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
+#if 1//CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
     bsp_gpio_init();
     ESP_ERROR_CHECK(i2c_master_init());
     xTaskCreate(i2c_test_task, "i2c_test_task_0", 2048 * 2, NULL, 10, NULL);
-
-    // esp_lcd_panel_io_handle_t tp_io_handle = NULL;
-    // esp_lcd_panel_io_i2c_config_t tp_io_config =
-    // {
-    // .dev_addr = 0x01,
-    // .lcd_cmd_bits = 8,
-    // .lcd_param_bits = 8,
-    // };
+#if 1
+     esp_lcd_panel_io_handle_t tp_io_handle = NULL;
+     esp_lcd_panel_io_i2c_config_t tp_io_config =
+     {
+     .dev_addr = 0x01,
+     .lcd_cmd_bits = 8,
+     .lcd_param_bits = 8,
+     };
     // // Attach the TOUCH to the SPI bus
-    // ESP_ERROR_CHECK(esp_lcd_new_panel_io_i2c((esp_lcd_i2c_bus_handle_t)I2C_NUM_1, &tp_io_config, &tp_io_handle));
+     ESP_ERROR_CHECK(esp_lcd_new_panel_io_i2c((esp_lcd_i2c_bus_handle_t)I2C_NUM_1, &tp_io_config, &tp_io_handle));
 
-    // esp_lcd_touch_config_t tp_cfg = {
-    //     .x_max = EXAMPLE_LCD_H_RES,
-    //     .y_max = EXAMPLE_LCD_V_RES,
-    //     .rst_gpio_num = 48,
-    //     .int_gpio_num = 47,
-    //     .flags = {
-    //         .swap_xy = 0,
-    //         .mirror_x = 0,
-    //         .mirror_y = 0,
-    //     },
-    // };
+    esp_lcd_touch_config_t tp_cfg = {
+        .x_max = EXAMPLE_LCD_H_RES,
+         .y_max = EXAMPLE_LCD_V_RES,
+        .rst_gpio_num = 48,
+         .int_gpio_num = 47,
+         .flags = {
+            .swap_xy = 0,
+            .mirror_x = 0,
+             .mirror_y = 0,
+         },
+    };
 
-// #if CONFIG_EXAMPLE_LCD_TOUCH_CONTROLLER_STMPE610
-//     ESP_LOGI(TAG, "Initialize touch controller STMPE610");
-// ESP_ERROR_CHECK(esp_lcd_touch_new_spi_stmpe610(tp_io_handle, &tp_cfg, &tp));
-// #endif // CONFIG_EXAMPLE_LCD_TOUCH_CONTROLLER_STMPE610
+#if CONFIG_EXAMPLE_LCD_TOUCH_CONTROLLER_STMPE610
+     ESP_LOGI(TAG, "Initialize touch controller STMPE610");
+ESP_ERROR_CHECK(esp_lcd_touch_new_spi_stmpe610(tp_io_handle, &tp_cfg, &tp));
+#endif // CONFIG_EXAMPLE_LCD_TOUCH_CONTROLLER_STMPE610
+
+#endif
 #endif // CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
 
     ESP_LOGI(TAG, "Turn on LCD backlight");
@@ -446,7 +448,7 @@ void app_main(void)
     ESP_ERROR_CHECK(esp_timer_create(&lvgl_tick_timer_args, &lvgl_tick_timer));
     ESP_ERROR_CHECK(esp_timer_start_periodic(lvgl_tick_timer, EXAMPLE_LVGL_TICK_PERIOD_MS * 1000));
 
-#if CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
+#if 1//CONFIG_EXAMPLE_LCD_TOUCH_ENABLED
     static lv_indev_drv_t indev_drv; // Input device driver (Touch)
     lv_indev_drv_init(&indev_drv);
     indev_drv.type = LV_INDEV_TYPE_POINTER;
